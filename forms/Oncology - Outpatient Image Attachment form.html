@@ -1,0 +1,221 @@
+<htmlform> <!--
+           Oncology - Inpatient progress note -Breast DST
+            Pilot_4July_v1.3NT
+                Author:
+                Builder: Byiringiro Joshua
+                started on Oct 23, 2017
+        -->
+
+    <macros>
+        @Source_Institution@ = 99871432-dd83-428c-ba54-f02ff80f9861
+        @Non-Image_attachment@=27729e22-3dcf-4a38-9c4e-219a1928b95f
+        @Image_attachment@=a3be32b6-5679-4f7f-815c-9ddf1040746f
+        @Attachment_construct@=fb8bc173-3828-4807-931a-13478c3b031c
+    </macros>
+
+
+    <style>
+        th.tableHeader {
+        background-color: #3333cc;
+        color: #FFFFFF;
+        font-size: 16px;
+        text-align: left;
+        }
+
+        ul {
+        list-style-type: square;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 11px;
+        }
+
+        tr.spaceUnder>td {
+        padding-bottom: 1em;
+        }
+
+        td {
+        font-size: 15px;
+        }
+
+        #container {
+        position: relative;
+        margin: auto;
+        width: 1400px;
+        height: auto;
+        }
+
+        @media print {
+        #container {
+        display: none;
+        }
+
+        #printArea {
+        display: block;
+        }
+
+        #userBar {
+        display: none;
+        }
+
+        #banner {
+        display: none;
+        }
+
+        #footer {
+        display: none;
+        }
+
+        #htmlFormEntryBanner {
+        display: none;
+        }
+
+        .error {
+        display: none;
+        }
+
+        .lables {
+        width: 200px;
+        }
+
+        table {
+        width: 100%;
+        }
+
+        table,td,th {
+        border: 1px solid black;
+        border-collapse: collapse;
+        }
+
+        th {
+        text-align: left;
+        background-color: #3333cc;
+        font-size: 10px;
+        }
+
+        td {
+        font-size: 10px;
+        }
+
+        .selectedCancerStagingKeys {
+        page-break-before: always;
+        border: 0px;
+        }
+
+        table.selectedCancerStagingKeys td {
+        border: 0px;
+        }
+
+        #signature {
+        border: none;
+        }
+        #signature td {
+        border: none;
+        }
+        }
+
+        @media screen {
+        table {
+        border: 1px solid #DFDFDF;
+        width: 100%;
+        border-color: #009d8e;
+        }
+
+        #container {
+        display: block;
+        }
+
+        #printArea {
+        display: none;
+        }
+        }
+    </style>
+    <script type="text/javascript">
+        $("#AssessmentCheckboxRadio").change(function() {
+    if( this.checked ) {
+        var checkname = $(this).attr("name");
+        $("input:checkbox[name='" + checkname + "']").removeAttr("checked");
+        this.checked = true;
+    }
+});
+    </script>
+    <div id="container" style="width:100%">
+        <section>
+
+            <table border="1" cellspacing="0" cellpadding="6" width="100%">
+                <tr>
+                    <td><b> IMB ID: <lookup class="value"
+                                            expression="patientIdentifiers.get(&quot;IMB ID&quot;)" /> <lookup
+                            class="value"
+                            expression="patientIdentifiers.get(&quot;IMB Primary Care Registration ID&quot;)" /></b>
+                    </td>
+                    <td>Date: <encounterDate id="encounterDate" default="today" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nom / Last name: <lookup class="value"
+                                                 expression="patient.personName.familyName" />
+                    </td>
+                    <td>Prénom/ First name: <lookup class="value"
+                                                    expression="patient.personName.givenName" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><img
+                            src="/openmrs/moduleResources/rwandareports/images/pihHands.png"
+                            align="left" height="65"></img>
+                        <h2>
+                            Inshuti Mu Buzima <br /> PIH Rwanda
+                        </h2></td>
+                    <td><strong> Oncology Program / Programme d'oncologie
+                        <br /> Outpatient Image Attachment form
+                    </strong> <br /></td>
+                </tr>
+                <tr>
+                    <td>Clinique / Clinic: <encounterLocation
+                            id="encounterLocation" default="Butaro Hospital" />
+                    </td>
+                    <td>Provider:<encounterProvider id="encounterProvider"
+                                                    role="Oncology Provider" default="currentUser" />
+                    </td>
+                </tr>
+            </table>
+
+
+            <table  border="1" cellpadding="2" style="border-collapse: collapse;border: 1px solid black;">
+                <tr>
+                    <th class="tableHeader" colspan="2">
+                        Image attachments
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>
+                            Source Institution
+                        </strong>
+                    </td>
+                    <td>
+                        <strong>
+                            Attachment
+                        </strong>
+                    </td>
+                </tr>
+                <obsgroup groupingConceptId="$@Attachment_construct@">
+                    <tr>
+                        <td>
+                            <obs conceptId="$@Source_Institution@"/>
+                        </td>
+                        <td>
+                            <obs conceptId="$@Image_attachment@"/>
+                        </td>
+                    </tr>
+                </obsgroup>
+            </table>
+
+        </section>
+        <br />
+
+        <submit />
+        <br/>
+        <encounterVoided/>
+    </div>
+</htmlform>

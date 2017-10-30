@@ -1,0 +1,857 @@
+<htmlform> <!--
+           Oncology - Inpatient progress note -Breast DST
+            Pilot_4July_v1.3NT
+                Author:
+                Builder: Byiringiro Joshua
+                started on July 27, 2017
+        -->
+
+    <macros>
+        @scheduledAdmission@ = 3cd91070-26fe-102b-80cb-0017a47871b2
+        @newAdmission@ = a842c267-fa68-45be-96e7-d78a1aa02bb4
+        @cancerProgressStatus@ = 05841055-295e-4313-ad3b-64b13be4118e
+        @UndergoingTreatment@ = 0387f568-8186-4f3b-bf11-ed436adaaa60
+        @SympomtomaticPalliativeCare@ = bc01928f-569e-4eae-ab9e-99c94d47e42f
+        @PresumedRemission@ = 1642c13b-3996-4614-a56f-86c48c0dc393
+        @reasonforHospitalAdmission@ = 1b066ca3-2e90-441c-8e1c-1818ac7a35f1
+        @chemotherapy@ = f08a431e-222e-479d-832a-43b345314080
+        @adverseEvent@ = da22d694-4ebf-41e2-aeb5-d28ccd61f1e1
+        @OTHER_NON_CODED@=3cee7fb4-26fe-102b-80cb-0017a47871b2
+        @Paincontrol$ = fc9299ee-9d15-4594-b5f4-5b162cd8837d
+        @CLUSTERED_ONCOLOGY_STAGE@=40a6d86f-dcd3-4e5e-88e6-bb55db8deef3
+        @EARLY@=c37a6c5a-7ef3-43e9-9ac6-215a1cf42c1f
+        @LOCALLY_ADVANCED@=3ab42fcd-df0f-4d5f-898f-1889ccb23a5b
+        @METASTATIC@=ca3a621e-9d13-483a-8863-b76f61812699
+        @CancerPriorTreatment@ = 33c20a0b-b6d0-451f-b9c8-7e40ea6850f9
+        @Completed_AC@ = 3277dab9-dc6a-4cc8-a7e7-835b69bc6776
+        @completer_AC_T@ = 207117c8-08fe-4d16-99bb-3fc2dbf25705
+        @Failed_AC_T@ = 30a4a6b7-38b7-4422-8eeb-077dbb8cb95f
+        @Failed_A@ =  	2e02e0bd-1a9f-40b5-8139-69ae13a25a6f
+        @Failed_C@ = 82212dea-3d97-402e-9b76-804102538f71
+        @Failed_T@ = 03bb30ce-0316-480d-be43-be1ecfc17355
+        @Failed_5-FU@ = 02ba08ea-8e37-46e2-8ee7-3f74767d5a0c
+        @FailedTamoxifen@ = 326f70fd-d849-4319-a565-2a7810887ceb
+        @FailedLetrozole@ = ace7540a-5adb-41b1-aad3-fed4a3aa56d2
+        @MRM@ = 4695e7e1-3360-4c95-872b-0ffceb56ac42
+        @SimpleMastectomy@ = 944ba7fe-65d6-4985-bd05-7c010d8e3db6
+        @RT@ = 26b2e69e-2344-489c-947d-7f535f51c5e1
+        @CancerRelapsed@ = 759148a5-ef5f-4aab-bc67-3811967e54b0
+        @PerformanceStatus_coded@ = 0122656b-2cc1-4709-8030-41373503b111
+        @0@ = 76d0827f-aef3-496c-93f4-d99bb4e53b91
+        @1@ = 596daaf5-3d0b-4ddc-a848-1732d70b5962
+        @2@ = bff8b23f-0d4b-4606-9e72-88c9b401f4d2
+        @3@ = ed34b78a-e029-4711-a2a0-7cad6160c89c
+        @4@ = 772c4100-270c-49d4-873a-ffec0bbef3d3
+        @Cancerdiagnosis(general)_coded@ = e44f78bb-a640-4adf-bce5-a756712b37dd
+        @BreastCancer@  =  	e1bd83f4-e9fa-4564-b8aa-74a9b199aca8
+        @Hodgkin'sLymphoma@ = c09c623b-83d6-4ea0-b0ec-6e4b94e38254
+        @OtherNonHodgkin'sLymphoma@ = 1c1d3792-bd75-492d-9073-5261ea3295c5
+        @NotCancer_noBiopsy@ = 885dc5bf-0f2a-4cb5-ab53-00d0116a1bed
+        @OTHERNON-CODED@ = 3cee7fb4-26fe-102b-80cb-0017a47871b2
+        @Suspected@ = f18d4b2d-8fa6-44e5-b130-f3819ba412cf
+        @OtherCancerDiagnosis@ = 1da2ad12-54ea-4af3-b9b2-a217064cc8d0
+        @NEW_OR_CHANGED_CANCER_DIAGNOSIS@ = 1164a066-d112-4bf9-bffb-0691f76d2618
+        @METHOD_OF_FAMILY_PLANNING@ = 3ccfbd0e-26fe-102b-80cb-0017a47871b2
+        @NATURAL_FAMILY_PLANNING@ = 3ceb5082-26fe-102b-80cb-0017a47871b2
+        @ORAL_CONTRACEPTION@ = 3cd42786-26fe-102b-80cb-0017a47871b2
+        @SurgicalFamilyPlanning@ = b8fd17a0-6736-460a-bb5d-d5625a7f4658
+        @BarrierFamilyPlanning@ = d72a4676-b456-432f-8ec4-6231c0341d7c
+        @Pregnant@ = ce677773-4278-494f-9be1-fda8cfc93055
+        @breastfeeding@ = 579eedaa-1227-48d4-aad3-0334e6dd049f
+        @SocialSupport@ = 4ac10fd6-2b4e-4edd-9932-489f0e54032e
+        @Temperature@ = 3ce939d2-26fe-102b-80cb-0017a47871b2
+        @diastolicBloodPressure@ = 3ce93694-26fe-102b-80cb-0017a47871b2
+        @systolicBloodPressure@ = 3ce934fa-26fe-102b-80cb-0017a47871b2
+        @pulse@ = 3ce93824-26fe-102b-80cb-0017a47871b2
+        @BloodOxygenSaturation@ = 3ce9401c-26fe-102b-80cb-0017a47871b2
+        @PainScale_High_5@ = e807f387-5e8d-42a0-a1f7-6364d4ab02d3
+        @RespiratoryRate@ = 3ceb11f8-26fe-102b-80cb-0017a47871b2
+        @generalPhysicalState@ = 3ce15212-26fe-102b-80cb-0017a47871b2
+        @CardialVascular@ = 12721eb9-b19b-43e3-8573-566a944ce1ba
+        @PulmonarySystem@ = 3ce15384-26fe-102b-80cb-0017a47871b2
+        @AbdominalSystem@ = 3ce157ee-26fe-102b-80cb-0017a47871b2
+        @ExtremitiesPhysicalObservation@ = 694680cd-b5ba-4cf9-a4a8-52371840e0c2
+        @OtherPhysicalSystem@ = e2d3493a-9db0-4c2e-9254-db41db8b0807
+        @Side@ = cbe15eb6-fba4-4ea0-9513-6aea78f97cc3
+        @Left@ = 3ce99198-26fe-102b-80cb-0017a47871b2
+        @Right@ = 3ce9949a-26fe-102b-80cb-0017a47871b2
+        @Bilateral@ = 57ec1a86-4e5a-4402-b417-9cd14d294f79
+        @BreastCancerConceptSet@ = b702125b-2426-47db-a13c-49363d01d1db
+        @BreastMassMobility@ = 13f2f074-3c53-4074-a690-6626220acbdf
+        @Mobile@ = a0f3848e-5380-4f61-b679-558f881bb4b4
+        @Fixed@ = 5de8377b-6170-4328-895b-f4131b147af2
+        @MassSize@ = 2f95703c-d0ce-4dfe-b59b-4376a27db8bf
+        @Length@ = 8e993b07-aacc-4629-a6d6-562d2c4e3857
+        @Width@ = 82f2423b-82aa-4890-a127-b8df3cd12d37
+        @MultipleSmallNodules@ = c68b2328-32a9-4fcb-8844-ad07c34dd6ea
+        @HEMOGLOBIN@ = 3ccc7158-26fe-102b-80cb-0017a47871b2
+        @PLATELETS@ = 3cd3d038-26fe-102b-80cb-0017a47871b2
+        @WHITE_BLOOD_CELLS@ = 3cd2a906-26fe-102b-80cb-0017a47871b2
+        @Absolute_Neutrophil_Count@ = 48348ce0-af6a-47a9-8671-1bbeb37dd500
+        @SERUM_CREATININE@ = 3cd4374e-26fe-102b-80cb-0017a47871b2
+        @SERUM_GLUTAMIC-OXALOACETIC_TRANSAMINASE@ = 3cd275d0-26fe-102b-80cb-0017a47871b2
+        @SERUM_GLUTAMIC-PYRUVIC_TRANSAMINASE@ = 3cd27760-26fe-102b-80cb-0017a47871b2
+        @TOTAL_BILIRUBIN@ = 3cd278fa-26fe-102b-80cb-0017a47871b2
+        @DIRECT_BILIRUBIN@ = b01f4fd2-7632-4c94-9481-9ed0d1da1f9a
+        @Laboratory_tests_other_result@ = c963d117-f6eb-4e98-aa64-0d52a3476c20
+        @Types_of_ultrasound@ = e08501d3-7eb1-4f32-a89a-1534f7527e2a
+        @Breast_ultrasound@ = 835099c5-3267-458c-bc3f-e42bc62a1354
+        @Liver_Ultrasound@ = eae98945-8dd6-4679-b3f9-74402d6d05e4
+        @Deep_Vein_thrombosis_rule-out@ = c0e4785b-2183-4a5c-ad8a-c7913bb32700
+        @Other_type_of_ultrasound@ = 08ae7a83-efff-4054-9c7a-d4c2fca2e6b1
+        @Laboratory_results@ = ec565ebd-5707-407b-885f-954646a5238a
+        @NORMAL@ = 3cd750a0-26fe-102b-80cb-0017a47871b2
+        @ABNORMAL@ = 3cd75230-26fe-102b-80cb-0017a47871b2
+        @mass_size_(coded)@ = 2f95703c-d0ce-4dfe-b59b-4376a27db8bf
+        @Increase@ = 804f92f4-cbc9-4b8a-9c50-2285daaeedd0
+        @Decrease@ = 3a8ae368-f958-447f-9be0-8e359852b9a1
+        @No_change@ = 27de0c89-4290-46a4-82e5-76b991ebafe2
+        @NOT_APPLICABLE@ = 3cd7b72a-26fe-102b-80cb-0017a47871b2
+        @Response_to_treatement@ = 1e5b2031-ffc6-451b-8fb3-c3e31d37f621
+        @Improving@ = 5f9c4b32-37ff-48ae-86cb-685d6aae6129
+        @No_change@ = 27de0c89-4290-46a4-82e5-76b991ebafe2
+        @worsening@ = d22579e5-3407-44f6-a3fa-ac41b640e335
+        @Response_to_treatement_in_Details@ = 974aa1ec-f08e-4127-951a-5cc1621b6658
+        @laboratory_order@ = a5de312d-6d9c-4830-bdb3-6e5b389cfe73
+        @COMPLETE_BLOOD_COUNT@ = 3cd6a0e2-26fe-102b-80cb-0017a47871b2
+        @SERUM_CREATININE@ = 3cd4374e-26fe-102b-80cb-0017a47871b2
+        @ISTAT_CHEM8_PLUS_CONSTRUCT@ = 4e572ddb-c191-4dda-90f5-e65107e2f591
+        @AST/ALT@ = 7921184b-ddec-4f4a-8f37-f347d2e8537f
+        @Other_Laboratory_Orders@ = 0cde08fd-d6e6-4f79-9cf9-8f4ee6f6b0df
+        @Treatment_Intent@ = 74bf3a55-6e92-4b91-86b0-a19345f22ad2
+        @Curative@ = 3d996ff0-4990-42d4-a7cf-45ead911d7af
+        @Palliation@ = 11fbb8e0-e069-4036-9095-56049540ab7c
+        @Planned_chemotherapy_regimen@ = 012df739-5bd1-445c-a76e-de0d5702d86a
+        @Doxorubicin_and_Cyclophosphamide@ = afa916da-ea70-4154-b042-5b6bb7f5b1c8
+        @PACLITAXEL@ = 1fc083a8-2edc-4b5e-982c-f263720b5857
+        @Doxorubicin@ = 75216AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        @Cyclophosphamide@ = 74120AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        @5-FU/FA@ = c99f572a-9b2b-4228-96cb-babbca0a54f6
+        @Tamoxifen@ = 84668AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        @letrozole@ = f0149890-2702-4c31-965a-b811c3443bc1
+        @Cycle@ = f75e7814-8a95-4316-b6cf-f5881a8ac3b8
+        @Day@ = 2d1a4103-49fe-4154-8465-5736ad8cacf2
+        @Chemo_Dose_Reduction@ = 740cbe15-f428-4982-97fa-0893ab29f2cd
+        @Antibiotics_list@ = 2ee23ed7-341c-4ad8-9166-db9ceaf4ced2
+        @CEFTRIAXONE@ = 3cd162b2-26fe-102b-80cb-0017a47871b2
+        @METRONIDAZOLE@ = 3ccec426-26fe-102b-80cb-0017a47871b2
+        @ERYTHROMYCIN@ = 3ccf0b34-26fe-102b-80cb-0017a47871b2
+        @CIPROFLOXACIN@ = 3cd3e154-26fe-102b-80cb-0017a47871b2
+        @AMOXICILLIN@ = 3ccef964-26fe-102b-80cb-0017a47871b2
+        @CLOXACILLIN@ = 3cd520f0-26fe-102b-80cb-0017a47871b2
+        @AMOXICILLIN_AND_CLAVULANIC_ACID@ = 3cd11a3c-26fe-102b-80cb-0017a47871b2
+        @AMPHOTERICIN_B@ = 71184AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        @medication_Orders_list@ = 66b37b9b-992a-48af-9ab4-605823e2486f
+        @Tramadol@ = 85275AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        @IBUPROFEN@ = 3cd5111e-26fe-102b-80cb-0017a47871b2
+        @PARACETAMOL@ = 3cccd4d6-26fe-102b-80cb-0017a47871b2
+        @Ondansetron@ = 81073AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        @METOCLOPRAMIDE@ = 3cd3f25c-26fe-102b-80cb-0017a47871b2
+        @AMITRIPTYLINE@ = 3cd52f32-26fe-102b-80cb-0017a47871b2
+        @BISACODYL@ = 1349756d-e133-4188-860b-689e6473f790
+        @Docusate@ = 95d5bb5d-8805-497c-baa3-2745504c2085
+        @Polyethyline_glycol@ = f73cb1fb-6cf8-477d-885f-e1837a8fa503
+        @CETIRIZINE@ = 3cd42600-26fe-102b-80cb-0017a47871b2
+        @CHLORPHENAMINE@ = 3cd512ae-26fe-102b-80cb-0017a47871b2
+        @PROMETHAZINE@ = 5f0cbcee-859e-464f-b2b2-1410aa277053
+        @Other_Medication_Orders_list@ = 60ab09a6-c284-4683-ab7c-519dcb016cd0
+        @Wound_Care@ = a10cc341-6df5-48d6-b27a-39c8b91b8feb
+        @Daily@ = 3182320f-f1be-4318-9f16-70584b82449a
+        @Other_Wound_Care(periodic)@ = a1fc9c8e-8702-4d48-bb88-d1399f32cefc
+        @Other_nursing_care@ = 099745d0-fb05-4520-a076-b0a3da83c836
+        @Transfer_location_(coded)@ = e6d921e8-0baf-4966-81e3-4a584cd8b2a6
+        @Kanombe_Hospital@ = 2ce11abf-ddea-432d-bb6d-6ce69940724e
+        @CHUK@ = 68222ccb-71ee-418e-a4a4-b924b4e80108
+        @CHUB@ = 2b472c6b-a0d4-44b1-bb2f-3d44289a19e5
+        @King_Faisal_Hospital@ = 55acdf7c-5027-4f01-90a2-ab9745f97dd3
+        @DISTRICT_HOSPITAL@ = e3f356b2-a340-47df-8b87-b70224437833
+        @REFER_TO_OTHER_HOSPITAL@ = 3ce1dafc-26fe-102b-80cb-0017a47871b2
+        @RETURN_VISIT_DATE@ = 3ce94df0-26fe-102b-80cb-0017a47871b2
+        @Transfer_Out_Reason(coded)@ = 65a52406-115e-45f5-8d90-a84a0359697e
+        @MRM_Evaluation@ = 6981e08e-c85a-42e6-9589-a51fc8ac3c76
+        @Toilet_Mastectomy@ = b792c351-20d2-4d16-b825-162d05cea443
+        @Computed_tomography_scan@ = 5e1c0ca4-4c25-4f6c-8957-3779e2ddffbc
+        @RT@ = 26b2e69e-2344-489c-947d-7f535f51c5e1
+        @Palliation_treatment@ = 494a0b6c-62c3-4bf0-a761-012b32c3fa2f
+        @Other_Transfer_Out_Reason@ = a5a284d9-9216-4991-bd3a-1acc1b0e1b50
+        @Oncology_Return_visit_locatin@ = 43b71f0b-7012-4df5-b54e-d604b71cc9ab
+        @Oncology_Ward@ = 0161fa23-d8ac-4cc6-a7e5-ad1ae3284b6c
+        @Outpatient_Clinic@ = b0699525-ac50-44da-a1a3-3280beb472fa
+        @Infusion_Center@ = 34eb8557-27e4-4e1d-a77f-8cea240e841e
+
+
+
+        <!-- imported ones-->
+        @X-RAY_CHEST@=3ccc6186-26fe-102b-80cb-0017a47871b2
+        @NEGATIVE@=3cd28732-26fe-102b-80cb-0017a47871b2
+        @POSITIVE@=3cd3a7a2-26fe-102b-80cb-0017a47871b2
+        @YES@=3cd6f600-26fe-102b-80cb-0017a47871b2
+        @NO@=3cd6f86c-26fe-102b-80cb-0017a47871b2
+        @NONE@=3cd743f8-26fe-102b-80cb-0017a47871b2
+        @DATE_OF_SURGERY@=48e392bb-0685-4ab3-a217-fd23502a5635
+        @TUMOUR_PROGNOSIS_FOR_KS@=40121f41-5303-4b18-8251-1d62e0eb3e2f
+        @IMMUNE_SYSTEM_PROGNOSIS_FOR_KS@=26ada79f-153a-4067-b4dd-bec6bfc40647
+        @SYSTEMIC_ILLNESS_PROGNOSIS_FOR_KS@=2476256a-2c16-4605-adcb-2ca1d33c299d
+        @TIS_STAGING_SYSTEM@=60f733d6-7000-48eb-be8e-c503b094b882
+        @SURGERY_TYPE@=f2dc764c-255b-4959-beec-b2a14b597cd3
+        @MASS_SIZE@=f174b027-79cf-4ebf-a103-d34b26eacafd
+        @MASS_LOCATION@=e95848e2-f31c-485f-ba8b-8c9424840f92
+        @MASS_SIZE_CONSTRUCT@=2e775064-6ece-4546-9375-50480e8e0020
+        @MOBILE@=a0f3848e-5380-4f61-b679-558f881bb4b4
+        @FIXED@=5de8377b-6170-4328-895b-f4131b147af2
+        @BREAST_MASS_MOBILITY@=13f2f074-3c53-4074-a690-6626220acbdf
+        @RIGHT_BREAST_MASS_CONSTRUCT@=e695754b-1c5f-41a8-9d08-5768b8202648
+        @HIGH_RISK@=c5382fcc-e3b5-4676-95a3-1b09489f8429
+        @PLANNED_RADIATION_DATE@=25064eeb-932e-4c93-994c-b4053e732ed3
+        @NOT_DETERMINED@=09c8c10f-c3a6-41f8-ac91-55493ee008c6
+        @H_PYLORI_STATUS@=e45fd262-8a8c-4f72-ae42-d540973cc39f
+        @T922+@=5fc18aa2-9d23-4a82-886e-3b8c5c7bbb38
+        @T922-@=3223fbd6-00ab-44dd-9d6a-e0826520d1e9
+        @LOCATION_OF_PATHOLOGY@=ca421c58-2c81-4fac-8cf7-aced4f2896e8
+        @CHRONIC_PHASE@=a6b97e07-2087-435b-a921-c96984da5e35
+        @ACCELERATED_PHASE@=0bb18969-3e13-4686-b718-ac5ec5caec39
+        @BLAST_CRISIS@=71835cb2-aeba-4014-9c33-3c3a8ee1f456
+        @CML_STAGING@=d960c608-37f7-4525-877c-bb4b41015ba7
+        @PLANNED_CHEMOTHERAPY_START_DATE@=e9b59f4e-8a3f-467f-b5e0-1296025fb286
+        @OVERALL_CANCER_STAGE_FOUR@=d2f21acb-9519-42ca-a72d-2fcb6bb15c5d
+        @METASTASES@=05303c1b-3de8-4fb8-91ad-9563ab4d2ac0
+        @HER2_FISH+@=7c7b9746-010e-42a1-97f7-4b5e5fe0f374
+        @N3_STAGING_FOR_TNM@=e4493745-f26e-4bb8-9fce-45770af54aae
+        @N2_STAGING_FOR_TNM@=a0c26ed6-4e9f-4743-8f86-8cbc10e6a691
+        @NO_STAGING_FOR_TNM@=c8818f76-88e6-4acc-9ac7-b3fe7c1a6470
+        @N1_STAGING_FOR_TNM@=92ec921e-da58-4137-9921-f5be63792846
+        @NODE@=5f6e7585-27a2-4174-8958-95b52a408dbc
+        @T1_STAGING_FOR_TNM@=852245b6-4982-49fe-90ea-3b4f20ddf308
+        @T2_STAGING_FOR_TNM@=cef35546-ed22-4a27-afd1-d0169d520691
+        @TO_STAGING_FOR_TNM@=ab4f8b5f-2919-4f83-9fbf-17db59910c48
+        @T3_STAGING_FOR_TNM@=7b4d19fb-61fc-4633-87a0-392442ee2e8b
+        @TIS_STAGING_FOR_TNM@=7f63a1c9-370d-4dd9-9e40-c6f0e0b9db44
+        @T4_STAGING_FOR_TNM@=4060bf94-ce2b-48b8-b641-5c1561455294
+        @TUMOR@=8a1b7c95-6f00-4d66-b3da-cd091a693cf1
+        @OVERALL_CANCER_STAGE_ONE_A@=0a51df04-8563-4e83-8869-56fd79fe4113
+        @PH+@=0a01e9a5-94a9-42df-8674-1602b7d455fb
+        @PH-@=1d19d217-b491-4bff-8de7-a1f65dea3314
+        @NUMBER_OF_PLANNED_CHEMOTHERAPY_CYCLES@=aaeb5782-3ee6-4cb8-9d27-c557ad91e241
+        @PR-@=5007fcdc-becb-474a-ab79-c36a94e56f66
+        @PR+@=a054fa15-43aa-4271-bc24-dc24f34014ac
+        @PROGESTERONE_RECEPTOR@=b8c56ccc-fe19-4daa-8f2a-682b1e3acddc
+        @B_SYMPTOMS_PRESENT@=94e19d03-ba1b-46ee-ac78-0cc853f85be0
+        @NO_B_SYMPTOMS@=fb525380-e1f3-4740-a05b-7a57201a98dd
+        @SYMPTOMATIC_STAGING@=24e02fad-f94f-4a81-84e7-6c753f37edd7
+        @LEFT_BREAST_MASS_CONSTRUCT@=7b9a2f55-d8dd-4e5f-8638-9e212032a14c
+        @EXTENSIVE_STAGE@=0d1221e1-e361-48e9-a79f-660baf25c141
+        @PH_STATUS@=341f9b25-da06-4153-8abc-8fc9d52ee849
+        @LOW_RISK@=a5428445-23de-43bd-bbfb-b4054d3b1005
+        @SINUSES_NASAL_CAVITY@=fec03580-5d54-4b5d-8926-fd0b184b84db
+        @DATE_OF_PATHOLOGY_REPORT@=926dd83d-5c6c-43d9-9fb8-a8c2e364d5f6
+        @NORMAL_RENAL_FUNCTION@=911e8796-0bbb-482d-a20f-486f1581528d
+        @HEAD_AND_NECK_DIAGNOSIS_NON_CODED@=7e952ad1-935a-4792-96a7-c0ba2079711e
+        @ABNOMAL_RENAL_FUNCTION@=bedc9e04-41ee-441e-9ec6-0be4833f75b8
+        @PATHOLOGY_PERFORMED@=145c13d3-dfbb-4dc6-9986-d10fd5e9bf48
+        @OVERALL_CANCER_STAGE_FIVE@=afe0e350-6be0-4093-a701-923a446f1924
+        @OVERALL_CANCER_STAGE_THREE_A@=5833e1dc-ed16-4f46-91d4-af33b9a5dd48
+        @TNM_STAGING@=89089c30-a9ed-4a50-a3dd-0d12029feaf7
+        @NASOPHARYNX@=cb08c841-6b04-4028-83dc-d349a837bcc
+        @OVERALL_CANCER_STAGE_ONE_B_ONE@=8f133498-607b-49d1-ab3a-9e09f9fa2246
+        @LIMITED_STAGE@=14f8ee91-6fe1-4907-8e4f-b12974a5f92a
+        @SMALL_CELL_LUNG_CANCER_STAGING@=3c7a530f-6061-4b0b-b541-f44bbadeb06b
+        @PLANNED_CHEMOTHERAPY_REGIMEN@=012df739-5bd1-445c-a76e-de0d5702d86a
+        @MEDIUM_RISK@=7a5652ea-dacc-46f0-8c45-329fa28e09aa
+        @OVERALL_CANCER_STAGE_FOUR_A@=013bfdb5-8bf0-46aa-b11f-cef89acfd0f2
+        @HER2_FISH-@=bc45c3ef-701d-4279-8434-ce94525fc7df
+        @VERY_HIGH_RISK@=88e2ac87-6e53-4933-81db-949c759f2d2a
+        @ACUTE_LYMPHOBLASTIC_LEUKEMIA_STAGING@=7b10db39-009a-4e99-8ef5-abc0977dbf65
+        @HER2_FISH@=c40c9293-14bf-4e42-becd-e2af798d217d
+        @LIQUID_CANCER_STAGING@=ed671ebe-7b3e-40ed-a1ef-3d758b54fc97
+        @MULTIPLE_MYELOMA_SUBCLASSIFICATION@=fefcac01-aadb-4b19-8390-07746920d506
+        @SMALL_CELL_LUNG_CANCER@=73087fb3-7d1f-4660-81a2-79f68ac001f0
+        @CYTOGENETICS@=e591db39-b26d-4e28-802e-1e435d2c0d22
+        @PLANNED_ONCOLOGY_SURGERY_DATE@=409ebbae-8a1e-43d4-82e8-eea7b493b51d
+        @NON_SMALL_CELL_LUNG_CANCER@=924fd607-4986-4cd1-af54-505b8b90f990
+        @LUNG_CANCER_DIAGNOSIS@=bc67ddac-4085-4427-978d-d214595ff304
+        @ORAL_CAVITY-OROPHARYNX-HYPOPHARYNX@=5181b953-119e-4123-9a71-f6bdbef3973a
+        @LARYNX@=4bd37944-e0e5-486a-8c14-03e9cf716e18
+        @EDIT_HEAD_AND_NECK_CANCER_DIAGNOSIS_STATE@=60272648-efe7-4522-9b3b-b3567fe5b403
+        @PLANNED_RADIATION_FACILITY@=09693eb4-aa3d-4804-bcc3-eb149cb0614a
+        @ER-@=d65a1323-e3b2-43ac-ad35-b36359d00504
+        @BULKY_MEDIASTINAL_DISEASE_STAGING@=a6896274-c1cb-4ff7-8e39-8d9c7c7cd50b
+        @ER+@=28fa396e-5330-43b3-8c69-d978003f24ff
+        @OVERALL_CANCER_STAGE_ONE@=39c6497d-fe50-4dcf-86e4-5360e1d32f82
+        @OVERALL_CANCER_STAGE_TWO@=c899d4c0-91a1-42f2-b395-114740f237fd
+        @PLANNED_CHANGES_TO_STANDARD_CHEMOTHERAPY_REGIMEN@=d6e5e3a7-2ab7-45c2-a104-4f49ed01aefc
+        @SKIN_CHANGES_RELATED_TO_BREAST_CANCER_DIAGNOSIS@=5b357578-179a-4ddf-996f-2eb760b092d7
+        @CANCER_DIAGNOSIS_DETAILS@=826af985-d6b8-46a5-8773-92e53ee10d45
+        @EARLY@=c37a6c5a-7ef3-43e9-9ac6-215a1cf42c1f
+        @OVERALL_CANCER_STAGE_THREE_B@=cbb88e1b-2d13-4557-8ebd-9c622cd8b0c8
+        @OVERALL_CANCER_STAGE_FOUR_B@=6d86391c-10a5-49d6-967b-e619c1c908a3
+        @OVERALL_CANCER_STAGE_ZERO@=11ad3741-d3fe-48ff-8872-ce42c8764d34
+        @OVERALL_CANCER_STAGE_THREE@=1d5896f3-2e0e-4bc2-aa6c-afe1911afa79
+        @OVERALL_CANCER_STAGE_ONE_B_TWO@=5d823631-ebf5-4849-919e-914b639cc060
+        @OVERALL_ONCOLOGY_STAGE@=e9cf4aed-34be-4c0a-9004-4294d9bb2d74
+        @ESTROGEN_RECEPTOR@=1acc8814-ce06-49f3-8cc1-6b5d1efe3f79
+        @HER2_IHC+@=f8e53211-e01c-4439-86e5-083b6a044652
+        @CLUSTERED_ONCOLOGY_STAGE@=40a6d86f-dcd3-4e5e-88e6-bb55db8deef3
+        @HER2_IHC-@=2a7e3812-da32-437e-b967-079706ca955e
+        @HER2_IHC@=6270e371-3fc9-4ed1-96fb-84b072067b1b
+        @OTHER_SOLID_CANCER_NONE_CODED@=b9e23b4a-e714-4a55-a3d4-2e152ab4b2b8
+        @OHTER_LIQUID_CANCER_NON_CODED@=5988cf36-80fb-46b9-bf19-93ec759c4bb6
+        @BREAST_CANCER_COMMENTS_AND_STAGING_CONSTRUCT@=ad1daadc-b671-493c-bb68-2ece80790706
+        @CERVICAL_CANCER_COMMENTS_AND_STAGING_CONSTRUCT@=41a80891-3bb2-4423-9647-1f803cebed60
+        @KS_COMMENTS_AND_STAGING_CONSTRUCT@=c4042973-e670-467d-a4a5-bd4f109bdea1
+        @H-N_COMMENTS_AND_STAGING_CONSTRUCT@=bc662e4d-6c74-48ab-a0c6-99e3f2d6dba9
+        @GASTRIC_CANCER_COMMENTS_AND_STAGING_CONSTRUCT@=971098c1-8e3b-42cf-bd10-ffc0f339c9aa
+        @COLO-RECTAL_COMMENTS_AND_STAGING@=a46f5808-7e2d-4fa9-9266-facac792167f
+        @PROSTATE_CANCER_COMMENTS_AND_STAGING_CONSTRUCT@=de77bcbb-4027-44af-9e22-3bb691cd1736
+        @NEPHROBLASTOMA_COMMENTS_AND_STAGING_CONSTRUCT@=7c2e9249-1c84-4b98-b4c2-7d0465b1257d
+        @LUNG_CANCER_COMMENTS_AND_STAGING_CONSTRUCT@=9c5d0b7e-0de8-4c3a-aea1-7284735ceeef
+        @OTHER_SOLID_CANCER_COMMENTS_AND_STAGING_CONSTRUCT@=e4179f1d-9fb0-427e-9ca8-be6098fae679
+        @HODKINS_LYMPHOMA_COMMENTS_AND-STAGING_CONSTRUCT@=d75d402a-a9da-40e3-827c-2e76114f51e6
+        @BURKITTS_LYMPHOMA_COMMENTS_AND_STAGING_CONSTRUCT@=3e4f8536-d583-437b-9b48-4e10ee8e1b17
+        @LARGE-B_CELL_LYMPHOMA_COMMENTS_AND_STAGING_CONSTRUCT@=5e0d8a90-4029-480e-a6c7-b2e925723261
+        @OHTER_NHL_COMMENTS_AND_STAGING_CONSTRUCT@=9c82b777-7ee8-440a-a95f-24c4e3ede867
+        @MULTIPLE_MYELOMA_COMMENTS_AND_STAGING_CONSTRUCT@=68b163a4-9d9c-4571-86e4-cb70b5b92ca7
+        @METASTATIC_CANCER_COMMENTS_AND-STAGING_CONSTRUCT@=58f97dd5-c583-42a6-97c0-5dabd8171b5c
+        @ALL_COMMENTS_AND_STAGING_CONSTRUCT@=1775fe51-cc4d-44db-9702-acc3f85c5fb3
+        @CML_COMMENTS_AND_STAGING_CONSTRUCT@=c8945be9-d3b8-41bb-918a-e3bb424c244e
+        @OTHER_LIQUID_CANCER_COMMENTS_AND_STAGING_CONSTRUCT@=92fee1a2-d4de-43c2-b880-d4235b889986
+        @PATHOLOGY_PERFORMED_CONSTRUCT@=639fb794-8a5a-4958-b4b1-749e554f44fb
+        @PLANNED_ONCOLOGY_SURGERY_CONSTRUCT@=c0f544c2-b233-4956-a8d6-b75153992f00
+        @PLANNED_RADIATION_CONSTRUCT@=63ad7caa-b6e2-4b9a-b462-771a9b048c36
+        @PLANNED_CHEMOTHERAPY_CONSTRUCT@=d4ceafd0-e5b5-422a-aecd-eac58207cbcc
+        @INVASIVE_DUCTAL_CARCINOMA@=ae859e04-95b2-4b1c-ad61-61d643a96556
+        @INVASIVE_LOBULAR_CARCINOMA@=6a37d4d3-7d2a-48fa-89fc-b4a314ffd253
+        @OTHER_INVASIVE_CARCINOMA@=ff5273ea-bc19-480f-9056-d830d137bca1
+        @PATHOLOGIC_DIAGNOSIS_NON_CODED@=387dc461-bde7-4d27-8754-8ee35e5be3ee
+        @PATHOLOGOGIC_DIAGNOSIS@=21f54f50-b804-476e-a0dd-a3238cd556fb
+        @ABDOMINAL_PELVIC_ULTRASOUND@=0ffd0c89-efdf-474f-8d2d-e4f8de7c7d90
+        @CT_SCAN_OF_CHEST_ABDOMEN_PELVIS@=f0645e5e-ad7e-45c3-a4d4-a412aa61b64c
+        @IMAGING_ASSESSMENT_AND_FINDINGS@=997d8e3c-a93c-4cd4-822d-9630bdb5fffe
+        @IMAGING_STUDIES@=24e5c4c1-ac2b-42f5-a144-aa41e4375cb5
+        @IPSALATERAL@=eb544294-bc35-4f28-b7bd-1b91f8703452
+        @CONTRALATERAL@=5012f7d5-d833-4888-ada6-10642214b2f9
+        @AXILLARY_LEVEL-I-II@=94a7738a-b2a3-45ec-b0b5-25b5aecf1599
+        @INFRACLAVICULAR_AXILLARY_LEVEL_III@=953afb46-e52f-4b41-88b7-7176fdd7747d
+        @SUPRACLAVICULAR_LEVEL@=8a69a66d-48ac-4bc5-9f01-9c186a5c7cbd
+        @INTERNAL_MAMMARY_LEVEL@=088a4f0a-0b6f-497b-ad07-2de7b8a72985
+        @LYMPHANEDOPATHY_LEVELS@=206ed02d-251f-42ee-8703-4cc175f55578
+        @PALLIATIVE@=b4c1df8a-9e39-4132-89a7-463394e765cd
+        @NEOADJUVANT@=d1d9a3b0-57d7-43c9-99a7-dad45fe00cc0
+        @ADJUVANT@=0270b13f-7641-4544-a41b-4e66649b679d
+        @CHEMOTHERAPY_REGIMEN_TIMING@=bfe19cc9-27cc-484f-8cdf-c737153dceaa
+        @IMAGING_STUDY_DATE@=71d7014e-3f02-4c41-b49a-bb6462de85ff
+        @IMAGING_STUDY_SITE@=1ece1f61-f35a-4cc4-bd6d-fcf9fc80b5b5
+        @PLANNED_CHEMOTHERAPY_REGIMEN_END_DATE@=989c2c3c-b000-45e2-9bc4-0bab9808d9c4
+        @TX_STAGING_FOR_TNM@=002884fb-12a7-4758-8e22-e66b60201059
+        @NX_STAGING_FOR_TNM@=fe262f06-f0be-49c0-b55b-82361b9b8145
+        @ONCOLOGY_SURGERY_FACILITY@=1e1a2f81-ef1b-4eff-a1a4-457aa5ee8b32
+        @SURGERY_PROCEDURE@=afbed187-03de-4fff-838a-66bbefb07993
+        @PATHOLOGY_REPORT_INSTITUTION@=2c077745-437b-4e5a-9b7f-d896632340ba
+        @SURGERY_PERFORMED@=893ebbae-cbe8-4ea1-9906-16dfb6620947
+        @PERFORMED_SURGERY_CONSTRUCT@=54743dc8-6dd0-44c3-9f97-f2d96255d18e
+        @OPERATIVE_REPROT_FACILITY@=1b727a0a-ec58-4360-bee3-bcf771a9404b
+        @OPERATIVE_REPORT_CONSTRUCT@=cb7278c9-6631-4a32-b4d7-378e24b2df93
+        @Other_Antibiotic_Drug@ = 3460a763-a9d6-46ad-9d90-d4074d3cd340
+
+    </macros>
+
+
+    <style>
+        th.tableHeader {
+        background-color: #009d8e;
+        color: #FFFFFF;
+        font-size: 16px;
+        text-align: left;
+        }
+
+        ul {
+        list-style-type: square;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 11px;
+        }
+
+        tr.spaceUnder>td {
+        padding-bottom: 1em;
+        }
+
+        td {
+        font-size: 15px;
+        }
+
+        #container {
+        position: relative;
+        margin: auto;
+        width: 1400px;
+        height: auto;
+        }
+
+        @media print {
+        #container {
+        display: none;
+        }
+
+        #printArea {
+        display: block;
+        }
+
+        #userBar {
+        display: none;
+        }
+
+        #banner {
+        display: none;
+        }
+
+        #footer {
+        display: none;
+        }
+
+        #htmlFormEntryBanner {
+        display: none;
+        }
+
+        .error {
+        display: none;
+        }
+
+        .lables {
+        width: 200px;
+        }
+
+        table {
+        width: 100%;
+        }
+
+        table,td,th {
+        border: 1px solid black;
+        border-collapse: collapse;
+        }
+
+        th {
+        text-align: left;
+        background-color: #D9D9D9;
+        font-size: 10px;
+        }
+
+        td {
+        font-size: 10px;
+        }
+
+        .selectedCancerStagingKeys {
+        page-break-before: always;
+        border: 0px;
+        }
+
+        table.selectedCancerStagingKeys td {
+        border: 0px;
+        }
+
+        #signature {
+        border: none;
+        }
+        #signature td {
+        border: none;
+        }
+        }
+
+        @media screen {
+        table {
+        border: 1px solid #DFDFDF;
+        width: 100%;
+        border-color: #009d8e;
+        }
+
+        #container {
+        display: block;
+        }
+
+        #printArea {
+        display: none;
+        }
+        }
+    </style>
+    <div id="container" style="width:100%">
+        <section>
+
+            <table border="1" cellspacing="0" cellpadding="6" width="100%">
+                <tr>
+                    <td><b> IMB ID: <lookup class="value"
+                                            expression="patientIdentifiers.get(&quot;IMB ID&quot;)" /> <lookup class="value"
+                                                                                                               expression="patientIdentifiers.get(&quot;IMB Primary Care Registration ID&quot;)" /></b>
+                    </td>
+                    <td>Date and Time: <encounterDate id="encounterDate" default="today" showTime="true"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nom / Last name: <lookup class="value"
+                                                 expression="patient.personName.familyName" />
+                    </td>
+                    <td>Prénom/ First name: <lookup class="value"
+                                                    expression="patient.personName.givenName" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><img src="/openmrs/moduleResources/rwandareports/images/pihHands.png" align="left"
+                             height="65" ></img>
+                        <h2>
+                            Inshuti Mu Buzima <br /> PIH Rwanda
+                        </h2>
+                    </td>
+                    <td><strong> Oncology Program / Programme d'oncologie <br />
+                        Diagnosis – Staging – Treatment Plan</strong> <br />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Clinique / Clinic: <encounterLocation id="encounterLocation" default="Butaro Hospital" />
+                    </td>
+                    <td>Author:<encounterProvider id="encounterProvider"
+                                                  role="Oncology Provider" default="currentUser"/>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <font size="6">Inpatient progress note: BREAST CANCER</font>
+            <br />
+            <table class="tableHeader">
+                <tr>
+                    <th class="tableHeader" rowspan="4" border="2">EMR</th>
+                    <td>
+                        <obs conceptId="$@newAdmission@" style="checkbox"/> <b>New Admission</b>
+                        <obs conceptId="$@scheduledAdmission@" style="checkbox" value="false"/> <b>Unscheduled</b>
+                    </td>
+                    <td >
+                <tr>
+                    <td>
+                        <b>Status</b>
+                        <obs conceptId="$@cancerProgressStatus@" answerConceptIds="$@UndergoingTreatment@,$@SympomtomaticPalliativeCare@,$@PresumedRemission@" answerLabels="Undergoing treatment,Sympomtomatic palliative care (no chemo),Presumed remission" style="radio"/>
+                    </td>
+                </tr>
+
+                </td>
+                <td class="tableHeader">
+                    <tr>
+                        <td>
+                            <b>Reason for admission</b>
+                            <obs conceptId="$@reasonforHospitalAdmission@" answerConceptId="$@chemotherapy@" answerLabel="Chemotherapy" style="checkbox"/>
+                            <obs conceptId="$@reasonforHospitalAdmission@" answerConceptId="$@adverseEvent@" answerLabel="Adverse event" style="checkbox"/>
+                            <obs conceptId="$@reasonforHospitalAdmission@" answerConceptId="$@Paincontrol$" answerLabel="Pain control" style="checkbox"/>
+                            <obs conceptId="$@reasonforHospitalAdmission@" answerConceptId="$@OTHER_NON_CODED@" answerLabel="Other" style="checkbox"/>
+                        </td>
+                    </tr>
+
+                </td>
+                </tr>
+            </table>
+            <table >
+                <tr >
+                    <td>
+                        <table>
+                            <tr>
+                                <th class="tableHeader">
+                                    <b>BACKGROUND</b>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Stage: </b>
+                                    <obs conceptId="$@CLUSTERED_ONCOLOGY_STAGE@" answerConceptIds="$@EARLY@,$@LOCALLY_ADVANCED@,$@METASTATIC@" answerLabels="Early breast cancer,Locally advanced,Metastatic" style="radio"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Prior treatment: </b>
+                                    <obs conceptId="$@CancerPriorTreatment@" answerConceptId="$@Completed_AC@" answerLabel="Completed AC"/>
+                                    <obs conceptId="$@CancerPriorTreatment@" answerConceptId="$@completer_AC_T@" answerLabel="Completed AC-T"/>
+                                    <obs conceptId="$@CancerPriorTreatment@" answerConceptId="$@Failed_AC_T@" answerLabel="Failed AC-T"/>
+                                    <obs conceptId="$@CancerPriorTreatment@" answerConceptId="$@Failed_A@" answerLabel="Failed A"/>
+                                    <obs conceptId="$@CancerPriorTreatment@" answerConceptId="$@Failed_C@" answerLabel="Failed C"/>
+                                    <br/>
+                                    &#160; &#160;  &#160;  &#160;  &#160; &#160;  &#160;  &#160;  &#160; &#160;  &#160;  &#160;  &#160; &#160;
+                                    <obs conceptId="$@CancerPriorTreatment@" answerConceptId="$@Failed_T@" answerLabel="Failed T"/>
+                                    <obs conceptId="$@CancerPriorTreatment@" answerConceptId="$@Failed_5-FU@" answerLabel="Failed 5-FU"/>
+                                    <obs conceptId="$@CancerPriorTreatment@" answerConceptId="$@FailedTamoxifen@" answerLabel="Failed Tamoxifen"/>
+                                    <obs conceptId="$@CancerPriorTreatment@" answerConceptId="$@FailedLetrozole@" answerLabel="Failed Letrozole"/>
+                                    <obs conceptId="$@CancerPriorTreatment@" answerConceptId="$@MRM@" answerLabels="MRM"/>
+                                    <br/>
+                                    &#160; &#160;  &#160;  &#160;  &#160; &#160;  &#160;  &#160;  &#160; &#160;  &#160;  &#160;  &#160; &#160;
+                                    <obs conceptId="$@CancerPriorTreatment@" answerConceptId="$@SimpleMastectomy@" answerLabel="Simple mastectomy"/>
+                                    <obs conceptId="$@CancerPriorTreatment@" answerConceptId="$@RT@" answerLabel="RT"/>
+                                    <obs conceptId="$@CancerRelapsed@" style="checkbox"/><b>Relapsed</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>ECOG: </b>
+                                    <obs conceptId="$@PerformanceStatus_coded@" answerConceptIds="$@0@, $@1@, $@2@, $@3@, $@4@" answerLabels="0, 1, 2, 3, 4" style="radio"/>
+                                    <br/>
+                                    <b>Diagnosis</b>
+                                    <obs conceptId="$@Suspected@" style="checkbox"/> Suspected
+                                    <obs conceptId="$@Cancerdiagnosis(general)_coded@" answerConceptId="$@BreastCancer@" answerLabel="Breast Cancer" style="checkbox"/>
+                                    <obs conceptId="$@Cancerdiagnosis(general)_coded@" answerConceptId="$@Hodgkin'sLymphoma@" answerLabel="HL" style="checkbox"/>
+                                    <obs conceptId="$@Cancerdiagnosis(general)_coded@" answerConceptId="$@OtherNonHodgkin'sLymphoma@" answerLabel="NHL" style="checkbox"/>
+                                    <obs conceptId="$@Cancerdiagnosis(general)_coded@" answerConceptId="$@NotCancer_noBiopsy@" answerLabel="No Cancer" style="checkbox"/>
+                                    <br/>
+                                    &#160; &#160;  &#160;  &#160;  &#160; &#160; &#160; &#160; &#160; &#160;
+                                    <obs conceptId="$@Cancerdiagnosis(general)_coded@" answerConceptId="$@OTHERNON-CODED@" answerLabel="Other" style="checkbox"/>
+                                    <obs conceptId="$@OtherCancerDiagnosis@"/>
+                                    <obs conceptId="$@NEW_OR_CHANGED_CANCER_DIAGNOSIS@" style="checkbox"/> New/Changed
+
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
+                    <td >
+                        <table>
+                            <tr>
+                                <th class="tableHeader">
+                                    <b>Family Planing</b>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <obs conceptId="$@METHOD_OF_FAMILY_PLANNING@" answerConceptId="$@NATURAL_FAMILY_PLANNING@" answerLabel="Natural" style="checkbox"/>
+                                    <obs conceptId="$@METHOD_OF_FAMILY_PLANNING@" answerConceptId="$@ORAL_CONTRACEPTION@" answerLabel="Hormonal" style="checkbox"/>
+                                    <br/>
+                                    <obs conceptId="$@METHOD_OF_FAMILY_PLANNING@" answerConceptId="$@SurgicalFamilyPlanning@" answerLabel="surgical" style="checkbox"/>
+                                    <obs conceptId="$@METHOD_OF_FAMILY_PLANNING@" answerConceptId="$@BarrierFamilyPlanning@" answerLabel="Barrier" style="checkbox"/>
+                                    <br/>
+                                    <br/>
+                                    <obs conceptId="$@Pregnant@" style="checkbox"/> <b>Pregnant</b>
+                                    <br/>
+                                    <obs conceptId="$@breastfeeding@" style="checkbox"/> <b>Breastfeeding</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <hr/>
+                                    <b> Is the patient receiving social support? </b>
+                                    <obs conceptId="$@SocialSupport@" style="yes_no"/>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
+                </tr>
+            </table>
+            <table border="2">
+                <tr>
+                    <th colspan="5" class="tableHeader">
+                        <center><b>Physical exam</b></center>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        Temp:<obs conceptId="$@Temperature@"/> <sup>o</sup> C
+                        <br/>
+                        BP: <obs conceptId="$@systolicBloodPressure@"/> / <obs conceptId="$@diastolicBloodPressure@"/>
+                        <br/>
+                        Pulse:<obs conceptId="$@pulse@" />
+                    </td>
+                    <td>
+                        RR: <obs conceptId="$@RespiratoryRate@" />
+                        <br/>
+                        O<sub>2</sub> sat: <obs conceptId="$@BloodOxygenSaturation@"/> %
+                        <br/>
+                        Pain Scale: <obs conceptId="$@PainScale_High_5@"/> /5
+                    </td>
+                    <td>
+                        Gen:<obs conceptId="$@generalPhysicalState@"/>
+                        <br/>
+                        CV:<obs conceptId="$@CardialVascular@"/>
+                        <br/>
+                        Pulm:<obs conceptId="$@PulmonarySystem@"/>
+                    </td>
+                    <td>
+                        Abd:<obs conceptId="$@AbdominalSystem@" />
+                        <br/>
+                        Ext:<obs conceptId="$@ExtremitiesPhysicalObservation@"/>
+                        <br/>
+                        Other:<obs conceptId="$@OtherPhysicalSystem@" />
+
+                    </td>
+                    <td >
+                        <u>Breast and LN</u>
+                        <br/>
+                        Side:<obs conceptId="$@Side@" answerConceptIds="$@Left@,$@Right@, $@Bilateral@ " answerLabels="L, R, Bilateral"/>
+                        <br/>
+                        <obsgroup groupingConceptId="$@BreastCancerConceptSet@">
+                            Mass Size:<obs conceptId="$@MassSize@" answerConceptId="$@Length@"/>X<obs conceptId="$@MassSize@" answerConceptId="$@Width@"/> ;
+                            <obs conceptId="$@BreastMassMobility@" answerConceptId="$@Fixed@" style="checkbox"/>Fixed
+                            <obs conceptId="$@BreastMassMobility@" answerConceptId="$@Mobile@" style="checkbox"/> Mobile
+                        </obsgroup>
+                        <br/>
+                        <obsgroup groupingConceptId="$@BreastCancerConceptSet@">
+                            Mass Size:<obs conceptId="$@MassSize@" answerConceptId="$@Length@"/>X<obs conceptId="$@MassSize@" answerConceptId="$@Width@"/> ;
+                            <obs conceptId="$@BreastMassMobility@" answerConceptId="$@Fixed@" style="checkbox"/>Fixed
+                            <obs conceptId="$@BreastMassMobility@" answerConceptId="$@Mobile@" style="checkbox"/> Mobile
+                        </obsgroup>
+                        <br/>
+                        <obs conceptId="$@MultipleSmallNodules@" style="checkbox"/> Multiple small nodules
+                        <br/>
+                    </td>
+                </tr>
+                <tr>
+                   <td colspan="5">
+                       Lab results:
+                       <strong>Lab results:</strong>
+                       <hr/>
+                       Hgb:<obs conceptId="$@HEMOGLOBIN@"/>
+                       Plt:<obs conceptId="$@PLATELETS@"/>
+                       WBC:<obs conceptId="$@WHITE_BLOOD_CELLS@"/>
+                       ANC:<obs conceptId="$@Absolute_Neutrophil_Count@"/>
+                       Cr:<obs conceptId="$@SERUM_CREATININE@"/>
+                       AST:<obs conceptId="$@SERUM_GLUTAMIC-OXALOACETIC_TRANSAMINASE@"/>
+                       ALT:<obs conceptId="$@SERUM_GLUTAMIC-PYRUVIC_TRANSAMINASE@"/>
+                       TBili:<obs conceptId="$@TOTAL_BILIRUBIN@"/>
+                       Dbili:<obs conceptId="$@DIRECT_BILIRUBIN@"/>
+                       Other:<obs conceptId="$@Laboratory_tests_other_result@"/>
+                        <br/>
+                       <strong>Bedside ultrasound</strong>
+                        <obs conceptId="$@Types_of_ultrasound@" answerConceptId="$@Breast_ultrasound@" answerLabel="Breast," style="checkbox"/>
+                        <obs conceptId="$@Types_of_ultrasound@" answerConceptId="$@Liver_Ultrasound@" answerLabel="Liver," style="checkbox"/>
+                        <obs conceptId="$@Types_of_ultrasound@" answerConceptId="$@Deep_Vein_thrombosis_rule-out@" answerLabel="DVT rule-out," style="checkbox"/>
+                        <obs conceptId="$@Types_of_ultrasound@" answerConceptId="$@OTHER_NON_CODED@" answerLabel="Other:," style="checkbox"/>
+                        <obs conceptId="$@Other_type_of_ultrasound@"/>
+                       <br/>
+                        Result:
+                        <obs conceptId="$@Laboratory_results@" answerConceptIds="$@NORMAL@,$@ABNORMAL@" answerLabels="Normal,Abnormal" style="radio"/>
+                        <br/>
+                        <strong>Assessment &#38; Plan:</strong>
+                        <hr/>
+                        <strong>Mass size:</strong>
+                        <obs conceptId="$@mass_size_(coded)@" answerConceptIds="$@Increase@,$@Decrease@,$@No_change@,$@NOT_APPLICABLE@"
+                             answerLabels="Increase,Decrease,Unchanged,N/A" style="radio"/>
+                       <br/>
+                       <label style="background:red">
+                           WAITING for the changes on the form! on<strong>Adverse Events </strong>
+                       </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <strong>Response to treatment :</strong>
+                        <obs conceptId="$@Response_to_treatement@" answerConceptIds="$@Improving@,$@No_change@,$@worsening@" answerLabels="Improving,Unchanged,Worsening"
+                             style="radio"/>
+                        <br/>
+                        <obs conceptId="$@Response_to_treatement_in_Details@" cols="60"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <strong>Orders: <br/>
+                        Laboratory:
+                        </strong>
+                        <obs conceptId="$@laboratory_order@" answerConceptId="$@COMPLETE_BLOOD_COUNT@" answerLabel="FBC" style="checkbox"/>
+                        <obs conceptId="$@laboratory_order@" answerConceptId="$@SERUM_CREATININE@" answerLabel="Cr" style="checkbox"/>
+                        <obs conceptId="$@laboratory_order@" answerConceptId="$@ISTAT_CHEM8_PLUS_CONSTRUCT@" answerLabel="Electrolyses" style="checkbox"/>
+                        <obs conceptId="$@laboratory_order@" answerConceptId="$@AST/ALT@" answerLabel="AST/ALT" style="checkbox"/>
+                        <obs conceptId="$@laboratory_order@" answerConceptId="$@OTHER_NON_CODED@" answerLabel="Other" style="checkbox"/>
+                        <obs conceptId="$@Other_Laboratory_Orders@"/>
+                        <br/>
+                        <label style="background:red">
+                            WAITING for the changes on the form! on <strong> Imaging </strong>
+                        </label>
+                        <br/>
+                        <strong>Chemo Regimen:</strong>Intent:
+                        <obs conceptId="$@Treatment_Intent@" answerConceptIds="$@Curative@,$@Palliation@" answerLabels="Curative,Palliative" style="radio"/>
+                        <br/>
+                        Medication:
+                        <obs conceptId="$@Planned_chemotherapy_regimen@" answerConceptId="$@Doxorubicin_and_Cyclophosphamide@" answerLabel="AC" style="checkbox"/>
+                        <obs conceptId="$@Planned_chemotherapy_regimen@" answerConceptId="$@PACLITAXEL@" answerLabel="T" style="checkbox"/>
+                        <obs conceptId="$@Planned_chemotherapy_regimen@" answerConceptId="$@Doxorubicin@" answerLabel="A" style="checkbox"/>
+                        <obs conceptId="$@Planned_chemotherapy_regimen@" answerConceptId="$@Cyclophosphamide@" answerLabel="C" style="checkbox"/>
+                        <obs conceptId="$@Planned_chemotherapy_regimen@" answerConceptId="$@5-FU/FA@" answerLabel="5-FU" style="checkbox"/>
+                        : Cycle <obs conceptId="$@Cycle@"/>
+                        Day <obs conceptId="$@Day@"/>
+                        <obs conceptId="$@Planned_chemotherapy_regimen@" answerConceptId="$@Tamoxifen@" answerLabel="Tamoxifen" style="checkbox"/>
+                        <obs conceptId="$@Planned_chemotherapy_regimen@" answerConceptId="$@letrozole@" answerLabel="letrozole" style="checkbox"/>
+                        <br/>
+                        Dose reduction: <obs conceptId="$@Chemo_Dose_Reduction@"/> %
+                        <br/>
+                        <strong> Antibiotics :</strong>
+                        <obs conceptId="$@Antibiotics_list@" answerConceptId="$@CEFTRIAXONE@" answerLabel="Ceftriaxone" style="checkbox"/>
+                        <obs conceptId="$@Antibiotics_list@" answerConceptId="$@METRONIDAZOLE@" answerLabel="Flagyl" style="checkbox"/>
+                        <obs conceptId="$@Antibiotics_list@" answerConceptId="$@ERYTHROMYCIN@" answerLabel="Erythromycin" style="checkbox"/>
+                        <obs conceptId="$@Antibiotics_list@" answerConceptId="$@CIPROFLOXACIN@" answerLabel="Ciprofloxacin" style="checkbox"/>
+                        <obs conceptId="$@Antibiotics_list@" answerConceptId="$@AMOXICILLIN@" answerLabel="Amoxicillin" style="checkbox"/>
+                        <obs conceptId="$@Antibiotics_list@" answerConceptId="$@CLOXACILLIN@" answerLabel="Cloxacillin" style="checkbox"/>
+                        <obs conceptId="$@Antibiotics_list@" answerConceptId="$@AMOXICILLIN_AND_CLAVULANIC_ACID@" answerLabel="Augmentin" style="checkbox"/>
+                        <obs conceptId="$@Antibiotics_list@" answerConceptId="$@AMPHOTERICIN_B@" answerLabel="Amphotericin" style="checkbox"/>
+                        <br/>
+                        &#160; &#160;  &#160;  &#160;  &#160; &#160;  &#160;  &#160; &#160; &#160;
+                        <obs conceptId="$@Antibiotics_list@" answerConceptId="$@OTHER_NON_CODED@" answerLabel="Other" style="checkbox"/>
+                        <obs conceptId="$@Other_Antibiotic_Drug@"/>
+                        <br/>
+                        <strong> Other medications :</strong>
+                        <obs conceptId="$@medication_Orders_list@" answerConceptId="$@Tramadol@" answerLabel="Tramadol" style="checkbox"/>
+                        <obs conceptId="$@medication_Orders_list@" answerConceptId="$@IBUPROFEN@" answerLabel="Ibuprofen" style="checkbox"/>
+                        <obs conceptId="$@medication_Orders_list@" answerConceptId="$@PARACETAMOL@" answerLabel="Paracetamol" style="checkbox"/>
+                        <obs conceptId="$@medication_Orders_list@" answerConceptId="$@Ondansetron@" answerLabel="Ondansetron" style="checkbox"/>
+                        <obs conceptId="$@medication_Orders_list@" answerConceptId="$@METOCLOPRAMIDE@" answerLabel="Metoclopramide" style="checkbox"/>
+                        <obs conceptId="$@medication_Orders_list@" answerConceptId="$@AMITRIPTYLINE@" answerLabel="Amitriptyline" style="checkbox"/>
+                        <obs conceptId="$@medication_Orders_list@" answerConceptId="$@BISACODYL@" answerLabel="Bisacodyl" style="checkbox"/>
+                        <br/>
+                        &#160; &#160;  &#160;  &#160;  &#160; &#160;  &#160;  &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;
+                        <obs conceptId="$@medication_Orders_list@" answerConceptId="$@Docusate@" answerLabel="Docusate" style="checkbox"/>
+                        <obs conceptId="$@medication_Orders_list@" answerConceptId="$@Polyethyline_glycol@" answerLabel="Polyethyline glycol" style="checkbox"/>
+                        <obs conceptId="$@medication_Orders_list@" answerConceptId="$@CETIRIZINE@" answerLabel="Cetirizine" style="checkbox"/>
+                        <obs conceptId="$@medication_Orders_list@" answerConceptId="$@CHLORPHENAMINE@" answerLabel="chlorphenamine" style="checkbox"/>
+                        <obs conceptId="$@medication_Orders_list@" answerConceptId="$@PROMETHAZINE@" answerLabel="Promethazine" style="checkbox"/>
+                        <obs conceptId="$@medication_Orders_list@" answerConceptId="$@OTHER_NON_CODED@" answerLabel="Other" style="checkbox"/>
+                        <obs conceptId="$@Other_Medication_Orders_list@"/>
+                        <br/>
+                        <strong>Wound care :</strong>
+                        <obs conceptId="$@Wound_Care@" answerConceptId="$@Daily@" answerLabel="Daily" style="checkbox"/>
+                        <obs conceptId="$@Wound_Care@" answerConceptId="$@OTHER_NON_CODED@" answerLabel="Other" style="checkbox"/>
+                        <obs conceptId="$@Other_Wound_Care(periodic)@"/>
+                        <br/>
+                        <strong>Other nursing care :</strong>
+                        <obs conceptId="$@Other_nursing_care@"/>
+                        <br/>
+                        <strong>Tranfer out:</strong>
+                        <obs conceptId="$@Transfer_Out_Reason(coded)@" answerConceptId="$@MRM_Evaluation@" answerLabel="MRM evaluation" style="checkbox"/>
+                        <obs conceptId="$@Transfer_Out_Reason(coded)@" answerConceptId="$@Toilet_Mastectomy@" answerLabel="Toilet Mastectomy" style="checkbox"/>
+                        <obs conceptId="$@Transfer_Out_Reason(coded)@" answerConceptId="$@Computed_tomography_scan@" answerLabel="CT scan" style="checkbox"/>
+                        <obs conceptId="$@Transfer_Out_Reason(coded)@" answerConceptId="$@RT@" answerLabel="RT" style="checkbox"/>
+                        <obs conceptId="$@Transfer_Out_Reason(coded)@" answerConceptId="$@Palliation_treatment@" answerLabel="Palliative care" style="checkbox"/>
+                        <obs conceptId="$@Transfer_Out_Reason(coded)@" answerConceptId="$@OTHER_NON_CODED@" answerLabel="Other:" style="checkbox"/>
+                        <obs conceptId="$@Other_Transfer_Out_Reason@"/>
+
+                        <br/>
+                        Location:
+                        <obs conceptId="$@Transfer_location_(coded)@" answerConceptId="$@Kanombe_Hospital@" answerLabel="RMH" style="checkbox"/>
+                        <obs conceptId="$@Transfer_location_(coded)@" answerConceptId="$@CHUK@" answerLabel="CHUK" style="checkbox"/>
+                        <obs conceptId="$@Transfer_location_(coded)@" answerConceptId="$@CHUB@" answerLabel="CHUB" style="checkbox"/>
+                        <obs conceptId="$@Transfer_location_(coded)@" answerConceptId="$@King_Faisal_Hospital@" answerLabel="KFH" style="checkbox"/>
+                        <obs conceptId="$@Transfer_location_(coded)@" answerConceptId="$@DISTRICT_HOSPITAL@" answerLabel="Local DH" style="checkbox"/>
+                        <obs conceptId="$@Transfer_location_(coded)@" answerConceptId="$@OTHER_NON_CODED@" answerLabel="Other" style="checkbox"/>
+                        <obs conceptId="$@REFER_TO_OTHER_HOSPITAL@"/>
+                        <br/>
+                        <strong> *Complete 'Exit Program' form if patient is exiting from oncology program </strong>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        For discharged patients: <strong>Next RDV date:</strong>
+                        <obs conceptId="$@RETURN_VISIT_DATE@" allowFutureDates="true"/>
+                        <strong>if Chemo : </strong>
+                        Cycle <obs conceptId="$@Cycle@"/>
+                        Day <obs conceptId="$@Day@"/>
+                        <br/>
+                        <br/>
+                        <obs conceptId="$@Oncology_Return_visit_locatin@" answerConceptIds="$@Oncology_Ward@,$@Outpatient_Clinic@,$@Infusion_Center@" answerLabels="Oncology Ward,Outpatient Clinic, Infusion Center" style="radio"/>
+                    </td>
+                </tr>
+
+            </table>
+        </section>
+        <br />
+        <workflowState workflowId="c8dea23e-c596-40d0-a4a4-08cb61b82d3b"
+                       stateId="09426655-2909-4f6f-938b-7a31b991075e" type="hidden" />
+        <submit />
+        <br/>
+        <encounterVoided/>
+    </div>
+</htmlform>
