@@ -53,6 +53,14 @@
         @OTHER_REASON_FOR_REFERRAL@=eea065ac-117b-4be9-976b-2948b29046b7
         @OTHER_CAUSE_OF_DEATH@=a18bc25f-1757-4568-88a7-d58c4100f7f2
         @Oncology_Follow_up_completion@=f38a036e-8899-4380-b66b-62c2c1f931cc
+        @DIAGNOSIS@ = 226ed7ad-b776-4b99-966d-fd818d3302c2
+        @Diagnosis_confidence@ = 75db6878-341b-4d35-b7e4-4650df66db52
+        @Suspected@ = f18d4b2d-8fa6-44e5-b130-f3819ba412cf
+        @Pathologically_confirmed@ = 6baf30ed-ded5-4fe6-b1c4-911b3ca82a74
+        @Death_Characteristics@ = 9b1be0ab-033c-42e2-89f3-0ab81f529732
+        @Unexpected_Death@ = 4ecbbed3-3a37-493a-975a-80142923f60d
+        @Death_occurred_prior_to_curative_treatment_initiation@ = 964828b9-cb72-4dbb-bc4c-487753e25570
+        @Exit_Notes@ =0fe44b73-26ad-4f47-9903-2287ef52e007
     </macros>
     <style>
         .formName {
@@ -430,12 +438,23 @@
                              answerConceptId="$@REFERRAL_HOSPITAL@" answerLabel="Referral Hospital" /> <br/>
                         <obs conceptId="$@REFERRAL_LOCATION@"
                              answerConceptId="$@OTHER_NON_CODED@" answerLabel="Other" /><obs	conceptId="$@FACILITY@" /> <br/>
+                    <br/>
+                        Diagnosis: <obs conceptId="$@DIAGNOSIS@"/>
+                        <obs conceptId="$@Diagnosis_confidence@" answerConceptId="$@Suspected@" answerLabel="Suspected" style="checkbox"/>
+                        <obs conceptId="$@Diagnosis_confidence@" answerConceptId="$@Pathologically_confirmed@" answerLabel="Pathology confirmed" style="checkbox"/>
+
                     </td>
                 </tr>
 
                 <tr>
                     <td class="midleCell"></td>
                     <td colspan="2">
+                       <b> Death: </b>
+                        <obs conceptId="$@Death_Characteristics@" answerConceptId="$@Unexpected_Death@" answerLabel="Unexpected" style="checkbox"/>
+                        <obs conceptId="$@Death_Characteristics@" answerConceptId="$@Death_occurred_prior_to_curative_treatment_initiation@" answerLabel="Prior to curative treatment" style="checkbox"/>
+                        <br/>
+                        <br/>
+                        Initiation
                         <obs conceptId="$@ONC_END_REASON@"
                              answerConceptId="$@CANCER_DEATH@" answerLabel="Cancer related death" /> <br/>
                         <obs conceptId="$@ONC_END_REASON@"
@@ -456,32 +475,41 @@
                     <td class="midleCell"></td>
                     <td colspan="2" class="checkboxGroup"><b>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Location:</b><br />
 			<span
-                    style="float: right; display: inline-block; margin-right: 750px;"
-                    id="checkboxRadio"> <obs
+
+                    id="checkboxRadio">
+                &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                <obs
                     conceptId="7d3a9892-1674-4943-adc5-414a8076319e"
                     answerConceptId="682754d6-cff2-4f2e-90a3-ea3b1e7fa230"
-                    answerLabel="While admitted at Butaro" /><br /> <obs
+                    answerLabel="While admitted at Butaro" /><br />
+                &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                <obs
                     conceptId="7d3a9892-1674-4943-adc5-414a8076319e"
                     answerConceptId="3cda8388-26fe-102b-80cb-0017a47871b2"
-                    answerLabel="While admitted at Rwinkwavu" /><br /> <obs
+                    answerLabel="While admitted at Rwinkwavu" /><br />
+                &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                <obs
                     conceptId="7d3a9892-1674-4943-adc5-414a8076319e"
                     answerConceptId="21fce379-01e4-4baf-a683-116e4c4e2c4b"
-                    answerLabel="While admitted at OTHER facility" /><br /> <obs
+                    answerLabel="While admitted at OTHER facility" /><br />
+                &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                <obs
                     conceptId="7d3a9892-1674-4943-adc5-414a8076319e"
                     answerConceptId="b38fccb6-7ddf-4087-a56f-18eadfcd60e2"
-                    answerLabel="At home or other outpatient setting" /><br /> <obs
+                    answerLabel="At home or other outpatient setting" /><br />
+                &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                <obs
                     conceptId="7d3a9892-1674-4943-adc5-414a8076319e"
                     answerConceptId="3cee7fb4-26fe-102b-80cb-0017a47871b2"
-                    answerLabel="Other location: " /> <obs
+                    answerLabel="Other location: " />
+
+                <obs
                     conceptId="8fd332f2-d936-4943-9248-08ac0bc9169a" /> </span></td>
                 </tr>
                 <tr >
-                    <td class="topCell" colspan="3"><span class="disabled"><b>Notes:</b></span><br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
+                    <td class="topCell" colspan="3"><span ><b>Notes:</b></span><br />
+                        <obs conceptId="$@Exit_Notes@" cols="120"/>
+
                     </td>
                 </tr>
             </table>

@@ -191,7 +191,7 @@
 
 
         @EXTREMITY_EXAM@=3cd7637e-26fe-102b-80cb-0017a47871b2
-        @NO_EDEMA@=3cd12a04-26fe-102b-80cb-0017a47871b2
+        @NO_EDEMA@=824e8df3-27e9-4e2e-b61a-942b1fc9a48b
         @EDEMA@=3cd12a04-26fe-102b-80cb-0017a47871b2
         @1@=596daaf5-3d0b-4ddc-a848-1732d70b5962
         @2@=bff8b23f-0d4b-4606-9e72-88c9b401f4d2
@@ -260,6 +260,8 @@
         @OTHER_NCD_FOLLOW_UP_LOCATION@=cd4c4c5b-9965-4433-869c-71559998d746
 
         @OTHER_FOLLOW_UP@=388d3c0d-9c49-4623-8068-9e3ef08de12f
+        @Inpatient_Oncology@ =0b3925f9-0336-47a6-931e-5c356e9cc82f
+        @Outpatient_Oncology@ = ff319885-3f20-4ae5-8663-3ad5678cba41
     </macros>
 
     <style>
@@ -661,20 +663,12 @@ getField('reactionNonCoded3.value')[0].disabled = true;
         </table>
     </section> <section headerLabel="INTAKE STATUS">
         <table border="1" cellspacing="0" cellpadding="6" width="100%">
-            <tr>
-                <td>Intake site</td>
-                <td><encounterLocation order="43"  /></td>
-            </tr>
+
             <tr >
-                <td>Intake setting</td>
-                <td><span class="disabled disdiv"><input type="checkbox"  />Inpatient<input type="checkbox"  />OUTpatient </span></td>
+                <td>Intake visit type</td>
+                <td> <encounterType types="$@Inpatient_Oncology@,$@Outpatient_Oncology@"/></td>
             </tr>
-            <tr >
-                <td>Managing Doctors</td>
-                <td ><table width="100%" class="disdiv">
-                    GP:__________________________&#160;&#160;&#160;&#160; Specialist:__________________________
-                    <br/></table></td>
-            </tr>
+
         </table>
     </section> <section headerLabel="HISTORY OF PRESENT ILLNESS">
         <table border="1" cellspacing="0" cellpadding="6" width="100%">
@@ -1365,7 +1359,7 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                       answerConceptId="3cd6f86c-26fe-102b-80cb-0017a47871b2"
                       answerLabel="no" id="hideAllergies1" />
 				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
-				 <obs conceptId="$@HAS_ALLERGIES@" answerConceptId="3cd6fac4-26fe-102b-80cb-0017a47871b2" answerLabel="unknown" id="hideAllergies2" /></span></td>
+				 <obs conceptId="$@HAS_ALLERGIES@" answerConceptId="3cd6fac4-26fe-102b-80cb-0017a47871b2" answerLabel="unknown"  id="hideAllergies2"/></span></td>
             </tr>
 
             <!-- <tr class="allergies"> -->
@@ -1665,7 +1659,7 @@ getField('reactionNonCoded3.value')[0].disabled = true;
 
                 <td><obs conceptId="$@HEAD_AND_NECK_EXAM@" answerConceptId="$@NO_ABNORMALITIES@" answerLabel="No Abnormalities"/></td>
                 <td><obs conceptId="$@HEAD_AND_NECK_EXAM@" answerConceptId="$@ABNORMAL@" answerLabel="Abnormal"/>:<obs conceptId="$@HEAD_ABNORMAL@"/>
-                    <br /> <obs conceptId="$@GENERAL_EXAM_FINDINGS@" answerConceptId="$@GROWTH@" answerLabel="MASS"/>
+                    <br /> <obs conceptId="$@HEAD_MASS_LOCATION@" answerConceptId="$@GROWTH@" answerLabel="MASS"/>
                     Location:<obs conceptId="$@HEAD_MASS_LOCATION@"/> Size: <obs conceptId="$@HEAD_MASS_SIZE@"/>cm</td>
             </tr>
 
@@ -1778,7 +1772,7 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                     <br /> <obs conceptId="$@GENITAL_ABNORMALITIES@" answerConceptId="$@PARAMETRIAL_INVOLVEMENT@" answerLabel ="Parametrial involvement"/>
                     <br /> <obs conceptId="$@GENITAL_ABNORMALITIES@" answerConceptId="$@PELVIC_INVOLVEMENT@" answerLabel ="Pelvic side wall involvement"/>
                     <br /> <obs conceptId="$@GENITAL_ABNORMALITIES@" answerConceptId="$@RECTAL_INVOLVEMENT@" answerLabel ="Rectal involvement"/>
-                    <br /> <obs conceptId="$@GENITAL_ABNORMALITIES@" answerConceptId="$@OTHER_NON_CODED@" answerLabel ="Other fincdings"/>
+                    <br /> <obs conceptId="$@GENITAL_ABNORMALITIES@" answerConceptId="$@OTHER_NON_CODED@" answerLabel ="Other findings"/>
                     <obs conceptId="$@GENITAL_ABNORMALITIES_TEXT@"/></td>
 
             </tr>
@@ -1796,7 +1790,7 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                     <obs conceptId="$@DIAGNOSIS_CONFIDENCE@" answerConceptId="$@CLINICALLY_CONFIRMED@" answerLabel="Clinically confirmed"/>
                     <obs conceptId="$@DIAGNOSIS_CONFIDENCE@" answerConceptId="$@PATHOLOGICALLY_CONFIRMED@" answerLabel="Pathologically confirmed"/>
                     <obs conceptId="$@DIAGNOSIS_CONFIDENCE@" answerConceptId="$@SUSPECTED@" answerLabel="Suspected"/>
-                    <workflowState workflowId="49" stateId="680"/>
+                    <workflowState workflowId="49" stateId="680" type="hidden"/>
 
                     *Note that EMR will take all diagnoses here as suspected until DST completed
                 </td>
@@ -2140,13 +2134,12 @@ getField('reactionNonCoded3.value')[0].disabled = true;
     </section> <section headerLabel="DISPOSITION">
         <table border="1" cellspacing="0" cellpadding="6" width="100%">
             <tr>
-                <td class="checkboxGroup"><obsgroup groupingConceptId="8a62cf12-cd13-4624-ae80-4046912c1dda"><span id="checkboxRadio"><!-- <obsgroup groupingConceptId="8a62cf12-cd13-4624-ae80-4046912c1dda"> --> <obs conceptId="d3c8c5f8-9ebb-4622-98ca-c55ca41d3d44"
+                <td class="checkboxGroup"><obsgroup groupingConceptId="8a62cf12-cd13-4624-ae80-4046912c1dda"><!-- <obsgroup groupingConceptId="8a62cf12-cd13-4624-ae80-4046912c1dda"> --> <obs conceptId="d3c8c5f8-9ebb-4622-98ca-c55ca41d3d44"
                                                                                                                                                                                                                         answerConceptId="3ce0d472-26fe-102b-80cb-0017a47871b2"
                                                                                                                                                                                                                         answerLabel="Hospital admission date &amp; site: " /> <obs
                         conceptId="3ce94df0-26fe-102b-80cb-0017a47871b2" /> admission
 			reason: <obs conceptId="1d642160-089f-49d3-98ce-68885cb5f893" /><br />
-
-
+            <span id="checkboxRadio">
 			<obs conceptId="$@ADMISSION_FACILITY@" answerConceptId="$@RWINKWAVU_HOSPITAL@" answerLabel="Rwinkwavu DH"/>
 			<obs conceptId="$@ADMISSION_FACILITY@" answerConceptId="$@BUTARO_HOSPITAL@" answerLabel="BUTARO DH"/>
 			<obs conceptId="$@ADMISSION_FACILITY@" answerConceptId="$@KIREHE_HOSPITAL@" answerLabel="KIREHE DH"/>
