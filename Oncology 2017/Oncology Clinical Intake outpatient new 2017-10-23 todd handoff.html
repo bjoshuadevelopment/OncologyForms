@@ -666,7 +666,7 @@ getField('reactionNonCoded3.value')[0].disabled = true;
 
             <tr >
                 <td>Intake visit type</td>
-                <td> <encounterType types="$@Inpatient_Oncology@,$@Outpatient_Oncology@"/></td>
+                <td> <encounterType types="$@Inpatient_Oncology@,$@Outpatient_Oncology@" default="$@Outpatient_Oncology@"/></td>
             </tr>
 
         </table>
@@ -2396,7 +2396,7 @@ $j(document).ready(function() {
     <workflowState workflowId="c8dea23e-c596-40d0-a4a4-08cb61b82d3b" stateId="98091177-b242-40ae-9a78-120e5cdadac0" type="hidden" />
     <br />
     Form filled in by:<encounterProvider
-            role="Oncology Provider" />
+            role="Oncology Provider" default="currentUser"/>
     <br />
     <br />
     <submit />

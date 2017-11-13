@@ -974,9 +974,10 @@
                             id="encounterLocation" default="Butaro Hospital" />
                     </td>
                     <td>
-                        Visit Type: <encounterType types="$@Inpatient_Oncology@,$@Outpatient_Oncology@"/>
+                        Visit Type: <encounterType types="$@Inpatient_Oncology@,$@Outpatient_Oncology@"
+                                                   default="$@Inpatient_Oncology@"/>
                         Provider:<encounterProvider id="encounterProvider"
-                                                    role="Oncology Provider"  />
+                                                    role="Oncology Provider"  default="currentUser"/>
                     </td>
                 </tr>
             </table>
